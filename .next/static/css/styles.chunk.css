@@ -1,0 +1,30 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap);
+body {
+  background-color: #152028; }
+  body * {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    color: #D3D3D3; }
+
+.chart {
+  padding: 20px 0; }
+
+.table__header {
+  color: #ffffff;
+  font-weight: 400;
+  text-align: center; }
+
+.MuiPaper-root .PrivateTabIndicator-colorSecondary-3 {
+  background-color: #4bff1e; }
+
+.MuiTable-root .MuiTableHead-root {
+  max-width: 375px;
+  width: 375px; }
+
+.MuiTable-root .MuiTableCell-root {
+  font-size: 12px;
+  padding: 5px 0; }
+
+.MuiTable-root .MuiTableCell-body,
+.MuiTable-root .MuiTableCell-head {
+  color: #D3D3D3; }
+
