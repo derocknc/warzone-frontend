@@ -12,7 +12,12 @@ import {
 import { useEffect, useState, useRef } from 'react';
 import BarChart from '../components/BarChart';
 import TabPanels from '../components/TabPanels';
-import "../styles/styles.scss"
+import "../styles/styles.scss";
+
+const prodHost = 'https://wz-api.herokuapp.com';
+const localhost = 'http://localhost:5000';
+
+const host = process.env.NODE_ENV === 'production' ? prodHost : localhost;
 
 export default function Home() {
 
@@ -23,7 +28,7 @@ useEffect(() => {
   (async () => {
     if (!playerData) {
       try {
-        const response = await axios.get('http://localhost:5500/');
+        const response = await axios.get(`${host}/`);
         setPlayerData(response.data);
       } catch(error) {
         console.log(error);
@@ -31,7 +36,7 @@ useEffect(() => {
     }
     if (!playerWeeklyData) {
       try {
-        const response = await axios.get('http://localhost:5500/weekly');
+        const response = await axios.get(`${host}/weekly`);
         setPlayerWeeklyData(response.data);
       } catch(error) {
         console.log(error);
