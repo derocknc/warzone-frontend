@@ -59,7 +59,8 @@ export default function AllStats(props) {
 
           return (
             <MenuItem
-              value={chart.stat}
+              key={stat}
+              value={stat}
             >
               {chart.label}
             </MenuItem>
