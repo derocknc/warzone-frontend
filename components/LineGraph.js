@@ -10,8 +10,6 @@ const chartRef = useRef(null);
 
 const getData = (statType) => {
   const { matches } = currentPlayerData;
-  console.log(statType);
-  console.log(matches.map(match => match.playerStats[statType]));
   return matches.map(match => match.playerStats[statType]);
 }
 
@@ -30,7 +28,7 @@ useEffect(() => {
     new Chart(chartEl, {
       type: type,
       data: {
-        labels: currentPlayerData.matches.map((match, i) => i),
+        labels: currentPlayerData.matches.map((match, i) => i + 1),
         datasets: [
           {
             label: label,
@@ -39,6 +37,7 @@ useEffect(() => {
             borderColor: 'rgb(73, 166, 164, 1.0)',
             borderWidth: '0',
             hoverBorderWidth: '2',
+            pointRadius: 2
           }
         ]
       },

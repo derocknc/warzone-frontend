@@ -28,11 +28,28 @@ export default function LastTwentyStats(props) {
 
   const allPlayers = playerWeeklyData?.map((player => player.playerName));
 
-  const allIndividualStats = ['teamPlacement', 'kills', 'damageDone'];
+  const allIndividualStats = [
+    {
+      stat: 'teamPlacement',
+      label: 'Team Placement'
+    },
+    {
+      stat: 'kills',
+      label: 'Kills'
+    },
+    {
+      stat: 'damageDone',
+      label: 'Damage'
+    }
+  ];
 
   const [currentPlayer, setCurrentPlayer] = useState(allPlayers[0]);
-  const [currentStat, setCurrentStat] = useState(allIndividualStats[0]);
+  const [currentStat, setCurrentStat] = useState(allIndividualStats[0].stat);
 
+  const getLabel = () => {
+    const curr = allIndividualStats.find(stat => stat.stat === currentStat);
+    return curr.label;
+  };
 
   const getCurrentPlayerData = () => {
     return playerWeeklyData.find(weeklyData => weeklyData.playerName === currentPlayer);
@@ -136,9 +153,9 @@ export default function LastTwentyStats(props) {
                 return (
                   <MenuItem
                     key={i}
-                    value={stat}
+                    value={stat.stat}
                   >
-                    {stat}
+                    {stat.label}
                   </MenuItem>
                 )
               })}
@@ -153,7 +170,7 @@ export default function LastTwentyStats(props) {
             type="line"
             player={currentPlayer}
             statType={currentStat}
-            label={currentStat}
+            label={getLabel()}
           />
         </div>
       </div>

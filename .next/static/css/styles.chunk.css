@@ -7,17 +7,18 @@ body {
     color: #D3D3D3; }
 
 h1 {
-  margin-top: 35px;
+  margin-top: 20px;
   font-size: 24px;
   font-weight: 300;
   text-align: center;
   text-transform: uppercase; }
 
 .table-container {
-  margin-bottom: 35px; }
+  margin-bottom: 50px; }
 
 .per-player__selects {
-  display: flex; }
+  display: flex;
+  margin-bottom: 20px; }
 
 .per-player__select--player {
   margin-right: 20px; }
