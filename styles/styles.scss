@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 body {
+  margin: 0;
   background-color: #152028;
 
   * {
@@ -11,20 +12,59 @@ body {
 
 :global {
 
+  .all-stats {
+    &__heading {
+      font-weight: 300;
+      text-align: center;
+    }
+
+    &__select {
+      margin-bottom: 30px;
+    }
+  }
+
+  #__next-prerender-indicator {
+    display: none;
+  }
+
   .chart {
     padding: 20px 0;
   }
 
   .table__header {
-    color: #ffffff;
+    color: #CFD5D5;
     font-weight: 400;
     text-align: center;
   }
 
   .MuiPaper-root {
     .PrivateTabIndicator-colorSecondary-3 {
-      background-color: rgba(75, 255, 30, 1.0);
+      background-color: rgba(73, 166, 164, 1.0);
     }
+
+    .MuiList-root, .MuiList-padding {
+      padding: 0;
+    }
+
+    .MuiListItem-button {
+      background-color: #152028;
+    }
+
+    .MuiListItem-root.Mui-selected, .MuiListItem-root.Mui-selected:hover {
+      background-color: rgba(21, 32, 40, .9);
+    }
+
+    .PrivateTabIndicator-colorSecondary-4 {
+      background-color: #5D4A90;
+    }
+  }
+
+  .MuiPaper-root.MuiAppBar-colorPrimary {
+    background-color: rgba(73, 166, 164, 0.25);
+  }
+
+  .MuiPaper-root.MuiPopover-paper {
+    background-color: rgba(73, 166, 164, 1);
   }
 
   .MuiTable-root {
@@ -41,6 +81,39 @@ body {
     .MuiTableCell-body,
     .MuiTableCell-head {
       color: #D3D3D3;
+    }
+  }
+
+  .container {
+    .MuiBox-root {
+      padding: 0 16px;
+    }
+  }
+
+  .MuiFormControl-root {
+    color: #CFD5D5;
+
+    .MuiFormLabel-root {
+      color: #CFD5D5;
+    }
+
+    .MuiSelect-root {
+      color: #CFD5D5;
+    }
+
+    .MuiFormLabel-root.Mui-focused {
+      color: #CFD5D5;
+    }
+
+    .MuiInput-underline {
+
+      &::before {
+        border-bottom-color: #CFD5D5;
+      }
+
+      &::after {
+        border-bottom-color: rgba(73, 166, 164, 0.5);
+      }
     }
   }
 }

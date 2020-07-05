@@ -45,29 +45,32 @@ export default function AllStats(props) {
   };
 
   return (
-    <div>
-      <FormControl>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={currentStat.stat}
-          onChange={handleChange}
-        >
-        {charts.map((chart) => {
-          const { stat, label } = chart;
+    <div className="all-stats">
+      <h1 className="all-stats__heading">Lifetime Statistics</h1>
+      <div className="all-stats__select">
+        <FormControl>
+          <InputLabel id="demo-simple-select-label">Age</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={currentStat.stat}
+            onChange={handleChange}
+          >
+          {charts.map((chart) => {
+            const { stat, label } = chart;
 
-          return (
-            <MenuItem
-              key={stat}
-              value={stat}
-            >
-              {chart.label}
-            </MenuItem>
-          )
-        })}
-        </Select>
-      </FormControl>
+            return (
+              <MenuItem
+                key={stat}
+                value={stat}
+              >
+                {chart.label}
+              </MenuItem>
+            )
+          })}
+          </Select>
+        </FormControl>
+      </div>
       <div className="charts">
         <BarChart
           label={currentStat.label}

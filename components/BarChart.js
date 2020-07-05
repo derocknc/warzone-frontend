@@ -23,9 +23,9 @@ useEffect(() => {
 
   let gradientLine = chartEl
     .createLinearGradient(0, 0, 0, graphHeight);
-      gradientLine.addColorStop(0, "rgb(75, 255, 30, 1.0)");
-      gradientLine.addColorStop(0.25, "rgb(75, 255, 30, 0.25)");
-      gradientLine.addColorStop(1, "rgb(75, 255, 30, 0.05)");
+      gradientLine.addColorStop(0, "rgb(73, 166, 164, 1.0)");
+      gradientLine.addColorStop(0.25, "rgb(73, 166, 164, 0.25)");
+      gradientLine.addColorStop(1, "rgb(73, 166, 164, 0.05)");
 
   if (playerData) {
     new Chart(chartEl, {
@@ -37,7 +37,7 @@ useEffect(() => {
             label: label,
             data: getData(statType),
             backgroundColor: gradientLine,
-            borderColor: 'rgb(75, 255, 30, 1.0)',
+            borderColor: 'rgb(73, 166, 164, 1.0)',
             borderWidth: '1',
             hoverBorderWidth: '2',
           }
@@ -62,7 +62,7 @@ useEffect(() => {
         },
         legend: {
           labels: {
-            fontColor: '#ffffff',
+            fontColor: '#CFD5D5',
             boxWidth: 0
           }
         }
