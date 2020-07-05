@@ -7,14 +7,15 @@ body {
     color: #D3D3D3; }
 
 h1 {
-  margin-top: 20px;
-  font-size: 24px;
+  margin-top: 12px;
+  margin-bottom: 10px;
+  font-size: 20px;
   font-weight: 300;
   text-align: center;
   text-transform: uppercase; }
 
 .table-container {
-  margin-bottom: 50px; }
+  margin-bottom: 30px; }
 
 .per-player__selects {
   display: flex;
