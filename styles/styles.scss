@@ -20,6 +20,20 @@ body {
     text-transform: uppercase;
   }
 
+  .table-container {
+    margin-bottom: 35px;
+  }
+
+  .per-player {
+    &__selects {
+      display: flex;
+    }
+
+    &__select--player {
+      margin-right: 20px;
+    }
+  }
+
   .all-stats {
     &__select {
       margin-bottom: 30px;
@@ -41,7 +55,7 @@ body {
   }
 
   .MuiPaper-root {
-    .PrivateTabIndicator-colorSecondary-3 {
+    .MuiTabs-indicator {
       background-color: rgba(73, 166, 164, 1.0);
     }
 

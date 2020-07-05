@@ -13,6 +13,15 @@ h1 {
   text-align: center;
   text-transform: uppercase; }
 
+.table-container {
+  margin-bottom: 35px; }
+
+.per-player__selects {
+  display: flex; }
+
+.per-player__select--player {
+  margin-right: 20px; }
+
 .all-stats__select {
   margin-bottom: 30px; }
 
@@ -27,7 +36,7 @@ h1 {
   font-weight: 400;
   text-align: center; }
 
-.MuiPaper-root .PrivateTabIndicator-colorSecondary-3 {
+.MuiPaper-root .MuiTabs-indicator {
   background-color: #49a6a4; }
 
 .MuiPaper-root .MuiList-root, .MuiPaper-root .MuiList-padding {

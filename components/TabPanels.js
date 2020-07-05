@@ -63,15 +63,15 @@ export default function TabPanels(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="Last 20 games" {...a11yProps(0)} />
-          <Tab label="Lifetime" {...a11yProps(1)} />
+          <Tab label="Lifetime" {...a11yProps(0)} />
+          <Tab label="Last 20 games" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <LastTwentyStats playerWeeklyData={playerWeeklyData} />
+        <AllStats playerData={playerData} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <AllStats playerData={playerData} />
+        <LastTwentyStats playerWeeklyData={playerWeeklyData} />
       </TabPanel>
     </div>
   );
