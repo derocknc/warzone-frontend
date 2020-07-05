@@ -18,6 +18,7 @@ export default function LastTwentyStats(props) {
 
   return (
     <div className="table-container">
+      <h1 classname="table-container__heading">Last 20 Games</h1>
       <Table>
         <TableHead >
           <TableCell>

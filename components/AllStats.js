@@ -49,7 +49,7 @@ export default function AllStats(props) {
       <h1 className="all-stats__heading">Lifetime Statistics</h1>
       <div className="all-stats__select">
         <FormControl>
-          <InputLabel id="demo-simple-select-label">Age</InputLabel>
+          <InputLabel id="demo-simple-select-label">Stat</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"

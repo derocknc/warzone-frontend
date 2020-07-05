@@ -6,9 +6,12 @@ body {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     color: #D3D3D3; }
 
-.all-stats__heading {
+h1 {
+  margin-top: 35px;
+  font-size: 24px;
   font-weight: 300;
-  text-align: center; }
+  text-align: center;
+  text-transform: uppercase; }
 
 .all-stats__select {
   margin-bottom: 30px; }
@@ -45,9 +48,22 @@ body {
 .MuiPaper-root.MuiPopover-paper {
   background-color: #49a6a4; }
 
+.MuiTable-root td {
+  border-bottom-color: rgba(211, 211, 211, 0.25); }
+
+.MuiTable-root th {
+  border-bottom-color: #5D4A90; }
+
 .MuiTable-root .MuiTableHead-root {
-  max-width: 375px;
-  width: 375px; }
+  background-color: rgba(73, 166, 164, 0.25); }
+  .MuiTable-root .MuiTableHead-root .MuiTableCell-root:first-of-type {
+    padding-left: 16px; }
+
+.MuiTable-root .MuiTableRow-root .MuiTableCell-root:first-of-type {
+  padding-left: 16px; }
+
+.MuiTable-root .MuiTableBody-root tr:last-of-type .MuiTableCell-root {
+  border-bottom-color: #5D4A90; }
 
 .MuiTable-root .MuiTableCell-root {
   font-size: 12px;

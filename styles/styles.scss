@@ -12,12 +12,15 @@ body {
 
 :global {
 
-  .all-stats {
-    &__heading {
-      font-weight: 300;
-      text-align: center;
-    }
+  h1 {
+    margin-top: 35px;
+    font-size: 24px;
+    font-weight: 300;
+    text-align: center;
+    text-transform: uppercase;
+  }
 
+  .all-stats {
     &__select {
       margin-bottom: 30px;
     }
@@ -68,9 +71,41 @@ body {
   }
 
   .MuiTable-root {
+
+    td {
+      border-bottom-color: rgba(211, 211, 211, 0.25);
+    }
+
+    th {
+      border-bottom-color: #5D4A90;
+    }
+
     .MuiTableHead-root {
-      max-width: 375px;
-      width: 375px;
+      background-color: rgba(73, 166, 164, 0.25);
+
+      .MuiTableCell-root {
+        &:first-of-type {
+          padding-left: 16px;
+        }
+      }
+    }
+
+    .MuiTableRow-root {
+      .MuiTableCell-root {
+        &:first-of-type {
+          padding-left: 16px;
+        }
+      }
+    }
+
+    .MuiTableBody-root {
+      tr {
+        &:last-of-type {
+          .MuiTableCell-root {
+            border-bottom-color: #5D4A90;
+          }
+        }
+      }
     }
 
     .MuiTableCell-root {

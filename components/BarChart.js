@@ -16,6 +16,13 @@ const getData = (statType) => {
   return playerData.map(player => player.br[statType]);
 }
 
+const calculateStepSize = (statType) => {
+  const data = getData(statType);
+  const highest = Math.max(...data);
+
+  return (highest / 4);
+};
+
 useEffect(() => {
   const chartEl = chartRef.current.getContext("2d");
 
@@ -38,7 +45,7 @@ useEffect(() => {
             data: getData(statType),
             backgroundColor: gradientLine,
             borderColor: 'rgb(73, 166, 164, 1.0)',
-            borderWidth: '1',
+            borderWidth: '0',
             hoverBorderWidth: '2',
           }
         ]
@@ -47,16 +54,21 @@ useEffect(() => {
         responsive: true,
         scales: {
           xAxes: [{
-              gridLines: {
-                  display: false,
-              }
+            gridLines: {
+                display: false,
+            },
+            ticks: {
+              fontColor: '#CFD5D5',
+            }
           }],
           yAxes: [{
               gridLines: {
                   display: false,
               },
               ticks: {
-                min: 0
+                fontColor: '#CFD5D5',
+                min: 0,
+                stepSize: calculateStepSize(statType)
               }
           }]
         },
