@@ -27,7 +27,12 @@ export default function AllStats(props) {
       stat: 'gamesPlayed'
     },
     { 
-      label: 'Revives',
+      label: 'Win %',
+      type: 'bar',
+      stat: 'winPercentage'
+    },
+    { 
+      label: 'Revives Per Game',
       type: 'bar',
       stat: 'revives'
     },

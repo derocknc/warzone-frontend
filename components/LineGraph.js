@@ -13,6 +13,19 @@ const getData = (statType) => {
   return matches.map(match => match.playerStats[statType]);
 }
 
+const getAverage = (statType) => {
+  const { matches } = currentPlayerData;
+  const stat = matches.map(match => match.playerStats[statType]);
+  const total = stat.reduce((acc, curr) => {
+    return acc + curr;
+  }, 0);
+  if (statType === 'percentTimeMoving') {
+    const avg = (total / 20);
+    return `${avg.toFixed(0)}%`
+  }
+  return total / 20;
+}
+
 useEffect(() => {
   const chartEl = chartRef.current.getContext("2d");
 
@@ -31,7 +44,7 @@ useEffect(() => {
         labels: currentPlayerData.matches.map((match, i) => i + 1),
         datasets: [
           {
-            label: label,
+            label: `Average: ${getAverage(statType)}`,
             data: getData(statType),
             backgroundColor: gradientLine,
             borderColor: 'rgb(73, 166, 164, 1.0)',

@@ -13,6 +13,16 @@ const getNames = () => {
 const chartRef = useRef(null);
 
 const getData = (statType) => {
+  if (statType === 'revives') {
+    return playerData.map((player) => {
+      return (player.br.revives / player.br.gamesPlayed);
+    });
+  }
+  if (statType === 'winPercentage') {
+    return playerData.map((player) => {
+      return (player.br.wins / player.br.gamesPlayed);
+    });
+  }
   return playerData.map(player => player.br[statType]);
 }
 

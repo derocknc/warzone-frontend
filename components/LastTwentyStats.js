@@ -40,6 +40,10 @@ export default function LastTwentyStats(props) {
     {
       stat: 'damageDone',
       label: 'Damage'
+    },
+    {
+      stat: 'percentTimeMoving',
+      label: '% Time Moving'
     }
   ];
 
