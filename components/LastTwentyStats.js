@@ -17,8 +17,8 @@ import "../styles/styles.scss"
 export default function LastTwentyStats(props) {
   const { playerWeeklyData } = props;
 
-  const getRounded = (number) => {
-    return number.toFixed(2);
+  const getRounded = (number, decimals) => {
+    return number.toFixed(decimals);
   };
 
   const convertToPercentage = (number) => {
@@ -100,16 +100,16 @@ export default function LastTwentyStats(props) {
                     {player.playerName}
                   </TableCell>
                   <TableCell>
-                    {getRounded(player.summary.all.kdRatio)}
+                    {getRounded(player.summary.all.kdRatio, 2)}
                   </TableCell>
                   <TableCell>
-                    {getRounded(player.summary.all.gulagKills / player.summary.all.gulagDeaths)}
+                    {getRounded(player.summary.all.gulagKills / player.summary.all.gulagDeaths, 2)}
                   </TableCell>
                   <TableCell>
                     {convertToPercentage(player.summary.all.headshotPercentage)}
                   </TableCell>
                   <TableCell>
-                    {player.summary.all.damageDone / player.matches.length}
+                    {getRounded(player.summary.all.damageDone / player.matches.length, 0)}
                   </TableCell>
                   <TableCell>
                     {player.summary.all.objectiveTeamWiped}
