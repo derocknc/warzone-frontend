@@ -6,6 +6,18 @@ body {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     color: #D3D3D3; }
 
+.match__placement {
+  margin-right: 20px;
+  font-size: 26px;
+  font-weight: 600; }
+
+.match__placement--first {
+  color: #d4af37; }
+
+h2 {
+  font-size: 18px;
+  font-weight: 400; }
+
 .spinner-container {
   height: calc(100vh - 48px);
   width: 100%;
@@ -79,7 +91,7 @@ h1 {
   border-bottom-color: #5D4A90; }
 
 .MuiTable-root .MuiTableHead-root {
-  background-color: rgba(73, 166, 164, 0.25); }
+  background-color: rgba(73, 166, 164, 0.1); }
   .MuiTable-root .MuiTableHead-root .MuiTableCell-root:first-of-type {
     padding-left: 16px; }
 

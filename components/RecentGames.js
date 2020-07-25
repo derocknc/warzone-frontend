@@ -1,4 +1,12 @@
 import React from 'react';
+import {
+  Table,
+  TableCell,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableSortLabel
+} from "@material-ui/core";
 import { DateTime } from 'luxon';
 
 export default function RecentGames(props) {
@@ -10,11 +18,6 @@ export default function RecentGames(props) {
   
     return `${month}/${day} - ${hour}:${minute}`;
   };
-  
-  // const sortMatches = () => {
-  //   const { matches } = currentPlayerData;
-  //   return matches.map(match => formatDate(match.utcEndSeconds));  
-  // };
 
   const allMatches = playerWeeklyData.map((current) => current.matches);
 
@@ -24,46 +27,90 @@ export default function RecentGames(props) {
 
   let allMatchesMerged = [];
 
+  const modeConfig = {
+    'br_brsolo': 'Solos',
+    'br_brduos': 'Duos',
+    'br_brduostim_name2': 'Stimulus Duos',
+    'br_brtrios': 'Trios',
+    'br_brquads': 'Quads'
+  }
+
   let matchIDs = [];
   sortedMatches.forEach((match) => {
-    if (!matchIDs.find(id => id === match.matchID)) {
-      //TODO: add date to this array
-      matchIDs.push(match.matchID);
+    const { matchID, mode, utcEndSeconds, playerStats: { teamPlacement } } = match;
+    if (!matchIDs.find(id => id.matchID === matchID)) {
+      matchIDs.push({ matchID, mode, utcEndSeconds, teamPlacement });
     }
   });
-  matchIDs.forEach((id) => {
-    const filtered = sortedMatches.filter(match => match.matchID === id);
-    allMatchesMerged.push({ id, filtered })
+  matchIDs.forEach((game) => {
+    const filtered = sortedMatches.filter(match => match.matchID === game.matchID);
+    allMatchesMerged.push({ game, filtered })
   })
+
+  const suffixConfig = {
+    0: 'th',
+    1: 'st',
+    2: 'nd',
+    3: 'th',
+    4: 'th',
+    5: 'th',
+    6: 'th',
+    7: 'th',
+    8: 'th',
+    9: 'th',
+  }
+
+  const formatPlacementSuffix = (number) => {
+    const stringified = number.toString();
+    const lastDigit = stringified.charAt(stringified.length - 1);
+    return suffixConfig[lastDigit];
+  }
 
   return (
     <div className="recent-games">
       {allMatchesMerged && allMatchesMerged.map((match) => {
-        const { filtered, id } = match;
+        const { filtered, game } = match;
 
         return (
           <div className="match">
-            <h2>{id}</h2>
-            <div className="player-list">
-            <div className="player-list__player">
-                <div>Username</div>
-                <div>Date</div>
-                <div>Mode</div>
-                <div>Kills</div>
-              </div>
-            {filtered.map((playerData) => {
-              const { player, playerStats } = playerData;
+            <h2>
+              <span className={`match__placement ${game.teamPlacement === 1 && `match__placement--first`}`}>
+                {`${game.teamPlacement}${formatPlacementSuffix(game.teamPlacement)}`}
+              </span>
+              {`${modeConfig[game.mode]} @ ${formatDate(game.utcEndSeconds)}`}
+            </h2>
+            <Table>
+              <TableHead>
+                <TableCell>
+                  Username
+                </TableCell>
+                <TableCell>
+                  Kills
+                </TableCell>
+                <TableCell>
+                  Damage
+                </TableCell>
+              </TableHead>
+              <TableBody>
+                {filtered.map((playerData) => {
+                  const { player, playerStats } = playerData;
 
-              return (
-                <div className="player-list__player">
-                  <div>{player.username}</div>
-                  <div>{formatDate(playerData.utcEndSeconds)}</div>
-                  <div>{playerData.mode}</div>
-                  <div>{playerStats.kills}</div>
-                </div>
-              )
-            })}
-            </div>
+                  return (
+                    <TableRow>
+                      <TableCell>
+                        {player.username}
+                      </TableCell>
+                      <TableCell>
+                        {playerStats.kills}
+                      </TableCell>
+                      <TableCell>
+                        {playerStats.damageDone}
+                      </TableCell>
+                    </TableRow>
+                  )
+                })}
+              </TableBody>
+            </Table>
           </div>
         )
       })}

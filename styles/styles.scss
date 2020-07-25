@@ -12,6 +12,21 @@ body {
 
 :global {
 
+  .match__placement {
+    margin-right: 20px;
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  .match__placement--first {
+    color: #d4af37;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
   .spinner-container {
     height: calc(100vh - 48px);
     width: 100%;
@@ -112,7 +127,7 @@ body {
     }
 
     .MuiTableHead-root {
-      background-color: rgba(73, 166, 164, 0.25);
+      background-color: rgba(73, 166, 164, 0.1);
 
       .MuiTableCell-root {
         &:first-of-type {
