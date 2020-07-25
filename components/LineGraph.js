@@ -1,4 +1,5 @@
 import Chart from 'chart.js';
+import { DateTime } from 'luxon';
 import { useEffect, useState, useRef } from 'react';
 import "../styles/styles.scss"
 
@@ -26,6 +27,19 @@ const getAverage = (statType) => {
   return total / 20;
 }
 
+
+const formatDate = (timestamp) => {
+  const date = DateTime.fromSeconds(timestamp);
+  const { c: { month, day, hour, minute } } = date;
+
+  return `${month}/${day} - ${hour}:${minute}`;
+};
+
+const getDates = () => {
+  const { matches } = currentPlayerData;
+  return matches.map(match => formatDate(match.utcEndSeconds));  
+};
+
 useEffect(() => {
   const chartEl = chartRef.current.getContext("2d");
 
@@ -41,7 +55,7 @@ useEffect(() => {
     new Chart(chartEl, {
       type: type,
       data: {
-        labels: currentPlayerData.matches.map((match, i) => i + 1),
+        labels: getDates(),
         datasets: [
           {
             label: `Average: ${getAverage(statType)}`,

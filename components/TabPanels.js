@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import LastTwentyStats from '../components/LastTwentyStats';
 import AllStats from '../components/AllStats';
+import RecentGames from '../components/RecentGames';
+import Spinner from '../components/Spinner';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,16 +64,20 @@ export default function TabPanels(props) {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+        <Tabs value={value} onChange={handleChange} aria-label="tabs">
           <Tab label="Lifetime" {...a11yProps(0)} />
           <Tab label="Last 20 games" {...a11yProps(1)} />
+          <Tab label="Recent" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <AllStats playerData={playerData} />
+        {!playerData ? <Spinner /> : <AllStats playerData={playerData} />}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <LastTwentyStats playerWeeklyData={playerWeeklyData} />
+        {!playerData ? <Spinner /> : <LastTwentyStats playerWeeklyData={playerWeeklyData} />}
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        {!playerData ? <Spinner /> : <RecentGames playerWeeklyData={playerWeeklyData} />}
       </TabPanel>
     </div>
   );

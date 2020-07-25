@@ -12,7 +12,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { useEffect, useState, useRef } from 'react';
 import LineGraph from './LineGraph';
-import "../styles/styles.scss"
+import "../styles/styles.scss";
 
 export default function LastTwentyStats(props) {
   const { playerWeeklyData } = props;
@@ -47,16 +47,16 @@ export default function LastTwentyStats(props) {
     }
   ];
 
-  const [currentPlayer, setCurrentPlayer] = useState(allPlayers[0]);
-  const [currentStat, setCurrentStat] = useState(allIndividualStats[0].stat);
+  const [currentPlayer, setCurrentPlayer] = useState(allPlayers?.[0]);
+  const [currentStat, setCurrentStat] = useState(allIndividualStats?.[0].stat);
 
   const getLabel = () => {
-    const curr = allIndividualStats.find(stat => stat.stat === currentStat);
+    const curr = allIndividualStats?.find(stat => stat.stat === currentStat);
     return curr.label;
   };
 
   const getCurrentPlayerData = () => {
-    return playerWeeklyData.find(weeklyData => weeklyData.playerName === currentPlayer);
+    return playerWeeklyData?.find(weeklyData => weeklyData.playerName === currentPlayer);
   };
 
   const handleChange = (event) => {
@@ -80,10 +80,10 @@ export default function LastTwentyStats(props) {
               K/D
             </TableCell>
             <TableCell>
-              Gulag
+              K/G
             </TableCell>
             <TableCell>
-              HS%
+              Gulag
             </TableCell>
             <TableCell>
               Dmg/G
@@ -103,10 +103,10 @@ export default function LastTwentyStats(props) {
                     {getRounded(player.summary.all.kdRatio, 2)}
                   </TableCell>
                   <TableCell>
-                    {getRounded(player.summary.all.gulagKills / player.summary.all.gulagDeaths, 2)}
+                    {getRounded(player.summary.all.killsPerGame, 2)}
                   </TableCell>
                   <TableCell>
-                    {convertToPercentage(player.summary.all.headshotPercentage)}
+                    {getRounded(player.summary.all.gulagKills / player.summary.all.gulagDeaths, 2)}
                   </TableCell>
                   <TableCell>
                     {getRounded(player.summary.all.damageDone / player.matches.length, 0)}
@@ -131,7 +131,7 @@ export default function LastTwentyStats(props) {
                 value={currentPlayer}
                 onChange={handleChange}
               >
-              {allPlayers.map((player, i) => {
+              {allPlayers && allPlayers.map((player, i) => {
                 return (
                   <MenuItem
                     key={i}
