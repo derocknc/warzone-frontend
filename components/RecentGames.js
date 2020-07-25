@@ -64,7 +64,24 @@ export default function RecentGames(props) {
     const stringified = number.toString();
     const lastDigit = stringified.charAt(stringified.length - 1);
     return suffixConfig[lastDigit];
-  }
+  };
+
+  const calculateGulag = (kills, deaths) => {
+    if (kills && !deaths) {
+      return 'W';
+    } else if (!kills && !deaths) {
+      return 'N/A';
+    } else if (kills && deaths) {
+      return `W(${deaths})`;
+    } else {
+      const showDeaths = deaths - 1;
+      if (showDeaths) {
+        return `L(${deaths - 1})`;
+      } else {
+        return 'L';
+      }
+    }
+  };
 
   return (
     <div className="recent-games">
@@ -90,10 +107,15 @@ export default function RecentGames(props) {
                 <TableCell>
                   Damage
                 </TableCell>
+                <TableCell>
+                  Gulag
+                </TableCell>
               </TableHead>
               <TableBody>
                 {filtered.map((playerData) => {
                   const { player, playerStats } = playerData;
+
+                  console.log(playerData);
 
                   return (
                     <TableRow>
@@ -105,6 +127,9 @@ export default function RecentGames(props) {
                       </TableCell>
                       <TableCell>
                         {playerStats.damageDone}
+                      </TableCell>
+                      <TableCell>
+                        {calculateGulag(playerStats.gulagKills, playerStats.gulagDeaths)}
                       </TableCell>
                     </TableRow>
                   )
