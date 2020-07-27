@@ -115,8 +115,6 @@ export default function RecentGames(props) {
                 {filtered.map((playerData) => {
                   const { player, playerStats } = playerData;
 
-                  console.log(playerData);
-
                   return (
                     <TableRow>
                       <TableCell>

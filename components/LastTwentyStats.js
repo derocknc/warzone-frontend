@@ -67,6 +67,24 @@ export default function LastTwentyStats(props) {
     setCurrentStat(event.target.value);
   };
 
+  const calculateGulagKD = (matches) => {
+    let totalMatches = matches.length;
+    let kills = 0;
+    matches.forEach((match) => {
+      const { playerStats: { gulagKills, gulagDeaths } } = match;
+
+      if (gulagKills) {
+        kills += 1;
+      } else if (!gulagKills && !gulagDeaths) {
+        totalMatches -= 1;
+      }
+    });
+    const deaths = totalMatches - kills;
+    const ratio = kills / deaths;
+
+    return getRounded(ratio, 2);
+  };
+
   return (
     <>
       <div className="table-container">
@@ -88,12 +106,12 @@ export default function LastTwentyStats(props) {
             <TableCell>
               Dmg/G
             </TableCell>
-            <TableCell>
-              Wipes
-            </TableCell>
           </TableHead>
           <TableBody>
             {playerWeeklyData && playerWeeklyData.map((player) => {
+
+              const { matches } = player;
+
               return (
                 <TableRow>
                   <TableCell>
@@ -106,13 +124,10 @@ export default function LastTwentyStats(props) {
                     {getRounded(player.summary.all.killsPerGame, 2)}
                   </TableCell>
                   <TableCell>
-                    {getRounded(player.summary.all.gulagKills / player.summary.all.gulagDeaths, 2)}
+                    {calculateGulagKD(matches)}
                   </TableCell>
                   <TableCell>
                     {getRounded(player.summary.all.damageDone / player.matches.length, 0)}
-                  </TableCell>
-                  <TableCell>
-                    {player.summary.all.objectiveTeamWiped}
                   </TableCell>
                 </TableRow>
               )
