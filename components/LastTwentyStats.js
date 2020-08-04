@@ -68,18 +68,17 @@ export default function LastTwentyStats(props) {
   };
 
   const calculateGulagKD = (matches) => {
-    let totalMatches = matches.length;
     let kills = 0;
+    let deaths = 0;
     matches.forEach((match) => {
       const { playerStats: { gulagKills, gulagDeaths } } = match;
 
       if (gulagKills) {
         kills += 1;
-      } else if (!gulagKills && !gulagDeaths) {
-        totalMatches -= 1;
+      } else if (!gulagKills && gulagDeaths) {
+        deaths += 1;
       }
     });
-    const deaths = totalMatches - kills;
     const ratio = kills / deaths;
 
     return getRounded(ratio, 2);

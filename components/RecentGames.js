@@ -32,7 +32,10 @@ export default function RecentGames(props) {
     'br_brduos': 'Duos',
     'br_brduostim_name2': 'Stimulus Duos',
     'br_brtrios': 'Trios',
-    'br_brquads': 'Quads'
+    'br_brtriostim_name2': 'Stimulus Trios',
+    'br_brquads': 'Quads',
+    'br_brthquad': 'Crossplay - Quads',
+    'br_jugg_brquadjugr': 'Juggernaut Quads'
   }
 
   let matchIDs = [];
@@ -87,6 +90,8 @@ export default function RecentGames(props) {
     <div className="recent-games">
       {allMatchesMerged && allMatchesMerged.map((match) => {
         const { filtered, game } = match;
+
+        console.log(`${modeConfig[game.mode]} ${game.mode} @ ${formatDate(game.utcEndSeconds)}`);
 
         return (
           <div className="match">
