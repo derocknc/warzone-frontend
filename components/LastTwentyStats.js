@@ -84,6 +84,10 @@ export default function LastTwentyStats(props) {
     return getRounded(ratio, 2);
   };
 
+  const sortedData = playerWeeklyData.sort((a, b) => {
+    return b.summary.all.kdRatio - a.summary.all.kdRatio;
+  });
+
   return (
     <>
       <div className="table-container">
@@ -107,7 +111,7 @@ export default function LastTwentyStats(props) {
             </TableCell>
           </TableHead>
           <TableBody>
-            {playerWeeklyData && playerWeeklyData.map((player) => {
+            {sortedData && sortedData.map((player) => {
 
               const { matches } = player;
 

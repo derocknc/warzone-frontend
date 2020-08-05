@@ -91,8 +91,6 @@ export default function RecentGames(props) {
       {allMatchesMerged && allMatchesMerged.map((match) => {
         const { filtered, game } = match;
 
-        console.log(`${modeConfig[game.mode]} ${game.mode} @ ${formatDate(game.utcEndSeconds)}`);
-
         return (
           <div className="match">
             <h2>
