@@ -74,10 +74,10 @@ export default function TabPanels(props) {
         {!playerData ? <Spinner /> : <AllStats playerData={playerData} />}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {!playerData ? <Spinner /> : <LastTwentyStats playerWeeklyData={playerWeeklyData} />}
+        {!playerWeeklyData ? <Spinner /> : <LastTwentyStats playerWeeklyData={playerWeeklyData} />}
       </TabPanel>
       <TabPanel value={value} index={2}>
-        {!playerData ? <Spinner /> : <RecentGames playerWeeklyData={playerWeeklyData} />}
+        {!playerWeeklyData ? <Spinner /> : <RecentGames playerWeeklyData={playerWeeklyData} />}
       </TabPanel>
     </div>
   );

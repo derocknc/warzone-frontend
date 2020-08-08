@@ -12,18 +12,57 @@ import { DateTime } from 'luxon';
 export default function RecentGames(props) {
   const { playerWeeklyData } = props;
 
-  const formatDate = (timestamp) => {
-    const date = DateTime.fromSeconds(timestamp);
-    const { c: { month, day, hour, minute } } = date;
-  
-    return `${month}/${day} - ${hour}:${minute}`;
+  const dateConfig = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    timeZoneName: 'short'
+  }
+
+  const monthConfig = {
+    'January': '01',
+    'February': '02',
+    'March': '03',
+    'April': '04',
+    'May': '05',
+    'June': '06',
+    'July': '07',
+    'August': '08',
+    'September': '09',
+    'October': '10',
+    'November': '11',
+    'December': '12'
   };
 
-  const allMatches = playerWeeklyData.map((current) => current.matches);
+  const formatDate = (timestamp) => {
+    const date = DateTime.fromSeconds(timestamp);
+    const stringDate = date.toLocaleString(DateTime.DATETIME_FULL);
+    const removedEdt = stringDate.substr(0, stringDate.indexOf('EDT'));
+    const splitDate = stringDate.split(' ');
+    splitDate[0] = monthConfig[splitDate[0]];
+    splitDate.splice(2, 1);
+    splitDate.pop();
+    splitDate[1] = splitDate[1].split(',')[0];
+    
+    const month = splitDate[0];
+    const day = splitDate[1];
+    const time = splitDate[2];
+    const amPM = splitDate[3];
+  
+    return `${month}/${day} - ${time}${amPM}`;
+  };
 
-  const flatMatches = [].concat(...allMatches);
+  const allMatches = playerWeeklyData?.map((current) => current.matches);
 
-  const sortedMatches = flatMatches.sort((a, b) => b.utcEndSeconds - a.utcEndSeconds);
+  let flatMatches = [];
+
+  if (allMatches) {
+    flatMatches = [].concat(...allMatches);
+  }
+
+  const sortedMatches = flatMatches?.sort((a, b) => b.utcEndSeconds - a.utcEndSeconds);
 
   let allMatchesMerged = [];
 
