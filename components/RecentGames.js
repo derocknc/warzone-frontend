@@ -68,13 +68,15 @@ export default function RecentGames(props) {
 
   const modeConfig = {
     'br_brsolo': 'Solos',
+    'br_brbbsolo': 'Stim Solos',
     'br_brduos': 'Duos',
-    'br_brduostim_name2': 'Stimulus Duos',
+    'br_brduostim_name2': 'Stim Duos',
     'br_brtrios': 'Trios',
-    'br_brtriostim_name2': 'Stimulus Trios',
+    'br_brtriostim_name2': 'Stim Trios',
     'br_brquads': 'Quads',
     'br_brthquad': 'Crossplay - Quads',
-    'br_jugg_brquadjugr': 'Juggernaut Quads'
+    'br_jugg_brquadjugr': 'Juggernaut Quads',
+    'br_mini_miniroyale': 'Trios - Mini'
   }
 
   let matchIDs = [];
@@ -103,9 +105,9 @@ export default function RecentGames(props) {
   }
 
   const formatPlacementSuffix = (number) => {
-    const stringified = number.toString();
-    const lastDigit = stringified.charAt(stringified.length - 1);
-    return suffixConfig[lastDigit];
+    const stringified = number?.toString();
+    const lastDigit = stringified?.charAt(stringified.length - 1);
+    return suffixConfig?.[lastDigit] || '??';
   };
 
   const calculateGulag = (kills, deaths) => {
@@ -133,8 +135,8 @@ export default function RecentGames(props) {
         return (
           <div className="match">
             <h2>
-              <span className={`match__placement ${game.teamPlacement === 1 && `match__placement--first`}`}>
-                {`${game.teamPlacement}${formatPlacementSuffix(game.teamPlacement)}`}
+              <span className={`match__placement ${game?.teamPlacement === 1 && `match__placement--first`}`}>
+                {`${game.teamPlacement}${formatPlacementSuffix(game?.teamPlacement)}`}
               </span>
               {`${modeConfig[game.mode]} @ ${formatDate(game.utcEndSeconds)}`}
             </h2>
