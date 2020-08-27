@@ -7,7 +7,7 @@ export default function BarChart(props) {
 const { playerData, statType, type, label } = props;
 
 const getNames = () => {
-  return playerData.map(player => player.playerName);
+  return playerData?.map(player => player?.playerName);
 }
 
 const chartRef = useRef(null);
