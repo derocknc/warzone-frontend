@@ -15,7 +15,7 @@ import TabPanels from '../components/TabPanels';
 import "../styles/styles.scss";
 
 const prodHost = 'https://wz-api.herokuapp.com';
-const localhost = 'http://localhost:5000';
+const localhost = 'http://localhost:6000';
 
 const host = process.env.NODE_ENV === 'production' ? prodHost : localhost;
 

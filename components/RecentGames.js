@@ -95,7 +95,7 @@ export default function RecentGames(props) {
     0: 'th',
     1: 'st',
     2: 'nd',
-    3: 'th',
+    3: 'rd',
     4: 'th',
     5: 'th',
     6: 'th',
