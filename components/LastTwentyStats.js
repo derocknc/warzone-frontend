@@ -18,7 +18,7 @@ export default function LastTwentyStats(props) {
   const { playerWeeklyData } = props;
 
   const getRounded = (number, decimals) => {
-    return number.toFixed(decimals);
+    return number?.toFixed(decimals);
   };
 
   const convertToPercentage = (number) => {
@@ -26,7 +26,7 @@ export default function LastTwentyStats(props) {
     return percentage.toFixed(0);
   };
 
-  const allPlayers = playerWeeklyData?.map((player => player.playerName));
+  const allPlayers = playerWeeklyData?.map((player => player?.playerName));
 
   const allIndividualStats = [
     {
@@ -70,7 +70,7 @@ export default function LastTwentyStats(props) {
   const calculateGulagKD = (matches) => {
     let kills = 0;
     let deaths = 0;
-    matches.forEach((match) => {
+    matches?.forEach((match) => {
       const { playerStats: { gulagKills, gulagDeaths } } = match;
 
       if (gulagKills) {
@@ -85,7 +85,7 @@ export default function LastTwentyStats(props) {
   };
 
   const sortedData = playerWeeklyData.sort((a, b) => {
-    return b.summary.all.kdRatio - a.summary.all.kdRatio;
+    return b?.summary.all.kdRatio - a?.summary.all.kdRatio;
   });
 
   return (
@@ -113,24 +113,22 @@ export default function LastTwentyStats(props) {
           <TableBody>
             {sortedData && sortedData.map((player) => {
 
-              const { matches } = player;
-
               return (
                 <TableRow>
                   <TableCell>
-                    {player.playerName}
+                    {player?.playerName}
                   </TableCell>
                   <TableCell>
-                    {getRounded(player.summary.all.kdRatio, 2)}
+                    {getRounded(player?.summary.all.kdRatio, 2)}
                   </TableCell>
                   <TableCell>
-                    {getRounded(player.summary.all.killsPerGame, 2)}
+                    {getRounded(player?.summary.all.killsPerGame, 2)}
                   </TableCell>
                   <TableCell>
-                    {calculateGulagKD(matches)}
+                    {calculateGulagKD(player?.matches)}
                   </TableCell>
                   <TableCell>
-                    {getRounded(player.summary.all.damageDone / player.matches.length, 0)}
+                    {getRounded(player?.summary.all.damageDone / player?.matches.length, 0)}
                   </TableCell>
                 </TableRow>
               )

@@ -23,7 +23,7 @@ const getData = (statType) => {
       return (player?.br.wins / player?.br.gamesPlayed);
     });
   }
-  return playerData?.map(player => player.br[statType]);
+  return playerData?.map(player => player?.br[statType]);
 }
 
 const calculateStepSize = (statType) => {

@@ -54,7 +54,7 @@ export default function RecentGames(props) {
     return `${month}/${day} - ${time}${amPM}`;
   };
 
-  const allMatches = playerWeeklyData?.map((current) => current.matches);
+  const allMatches = playerWeeklyData?.map((current) => current?.matches);
 
   let flatMatches = [];
 
@@ -80,14 +80,16 @@ export default function RecentGames(props) {
   }
 
   let matchIDs = [];
-  sortedMatches.forEach((match) => {
-    const { matchID, mode, utcEndSeconds, playerStats: { teamPlacement } } = match;
-    if (!matchIDs.find(id => id.matchID === matchID)) {
-      matchIDs.push({ matchID, mode, utcEndSeconds, teamPlacement });
+  sortedMatches?.forEach((match) => {
+    if (match) {
+      const { matchID, mode, utcEndSeconds, playerStats: { teamPlacement } } = match;
+      if (!matchIDs.find(id => id.matchID === matchID)) {
+        matchIDs.push({ matchID, mode, utcEndSeconds, teamPlacement });
+      }
     }
   });
   matchIDs.forEach((game) => {
-    const filtered = sortedMatches.filter(match => match.matchID === game.matchID);
+    const filtered = sortedMatches.filter(match => match?.matchID === game?.matchID);
     allMatchesMerged.push({ game, filtered })
   })
 
