@@ -76,7 +76,8 @@ export default function RecentGames(props) {
     'br_brquads': 'Quads',
     'br_brthquad': 'Crossplay - Quads',
     'br_jugg_brquadjugr': 'Juggernaut Quads',
-    'br_mini_miniroyale': 'Trios - Mini'
+    'br_mini_miniroyale': 'Trios - Mini',
+    'br_zxp_zmbroy': 'Zombie Royale'
   }
 
   let matchIDs = [];
