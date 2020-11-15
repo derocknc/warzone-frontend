@@ -17,7 +17,7 @@ import "../styles/styles.scss";
 export default function LastTwentyStats(props) {
   const { playerWeeklyData } = props;
 
-  const getRounded = (number, decimals) => {
+  const getRounded = (number, decimals = 0) => {
     return number?.toFixed(decimals);
   };
 
@@ -109,6 +109,15 @@ export default function LastTwentyStats(props) {
             <TableCell>
               Dmg/G
             </TableCell>
+            <TableCell>
+              Dmg Taken/G
+            </TableCell>
+            <TableCell>
+              DTPG/DeathsPG
+            </TableCell>
+            <TableCell>
+              Dmg Given/Taken
+            </TableCell>
           </TableHead>
           <TableBody>
             {sortedData && sortedData.map((player) => {
@@ -129,6 +138,15 @@ export default function LastTwentyStats(props) {
                   </TableCell>
                   <TableCell>
                     {getRounded(player?.summary.all.damageDone / player?.matches.length, 0)}
+                  </TableCell>
+                  <TableCell>
+                    {getRounded((player?.summary.all.damageTaken / 20))}
+                  </TableCell>
+                  <TableCell>
+                    {getRounded(player?.summary.all.damageTaken / player?.summary.all.deaths)}
+                  </TableCell>
+                  <TableCell>
+                  {getRounded((player?.summary.all.damageDone / player?.summary.all.damageTaken), 2)}
                   </TableCell>
                 </TableRow>
               )
