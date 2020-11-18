@@ -110,10 +110,7 @@ export default function LastTwentyStats(props) {
               Dmg/G
             </TableCell>
             <TableCell>
-              DmgT/G
-            </TableCell>
-            <TableCell>
-              DTPG/DeathsPG
+              DmgT/D
             </TableCell>
           </TableHead>
           <TableBody>
@@ -135,9 +132,6 @@ export default function LastTwentyStats(props) {
                   </TableCell>
                   <TableCell>
                     {getRounded(player?.summary.all.damageDone / player?.matches.length, 0)}
-                  </TableCell>
-                  <TableCell>
-                    {getRounded((player?.summary.all.damageTaken / 20))}
                   </TableCell>
                   <TableCell>
                     {getRounded(player?.summary.all.damageTaken / player?.summary.all.deaths)}
