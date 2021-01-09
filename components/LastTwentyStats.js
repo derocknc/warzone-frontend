@@ -84,6 +84,17 @@ export default function LastTwentyStats(props) {
     return getRounded(ratio, 2);
   };
 
+  const getBestPlacement = (matches) => {
+    let wins = 0;
+    matches?.forEach((match) => {
+      console.log(match?.playerStats?.teamPlacement);
+      if (match?.playerStats?.teamPlacement === 1) {
+        wins += 1;
+      }
+    });
+    return wins;
+  }
+
   const sortedData = playerWeeklyData.sort((a, b) => {
     return b?.summary.all.kdRatio - a?.summary.all.kdRatio;
   });
@@ -109,8 +120,11 @@ export default function LastTwentyStats(props) {
             <TableCell>
               Dmg/G
             </TableCell>
+            {/* <TableCell>
+              Revives/G
+            </TableCell> */}
             <TableCell>
-              DmgT/D
+              Wins
             </TableCell>
           </TableHead>
           <TableBody>
@@ -133,8 +147,11 @@ export default function LastTwentyStats(props) {
                   <TableCell>
                     {getRounded(player?.summary.all.damageDone / player?.matches.length, 0)}
                   </TableCell>
+                  {/* <TableCell>
+                    {getRounded(player?.summary.all.objectiveReviver / 20, 2)}
+                  </TableCell> */}
                   <TableCell>
-                    {getRounded(player?.summary.all.damageTaken / player?.summary.all.deaths)}
+                    {getBestPlacement(player?.matches)}
                   </TableCell>
                 </TableRow>
               )
