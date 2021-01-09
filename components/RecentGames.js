@@ -77,7 +77,10 @@ export default function RecentGames(props) {
     'br_brthquad': 'Crossplay - Quads',
     'br_jugg_brquadjugr': 'Juggernaut Quads',
     'br_mini_miniroyale': 'Trios - Mini',
-    'br_zxp_zmbroy': 'Zombie Royale'
+    'br_zxp_zmbroy': 'Zombie Royale',
+    'br_mini_rebirth_mini_royale_duos': 'Rebirth Mini Duos',
+    'br_rebirth_rbrthtrios': 'Rebirth Trios',
+    'br_mini_rebirth_mini_royale_quads': 'Rebirth Mini Quads'
   }
 
   let matchIDs = [];
@@ -109,9 +112,15 @@ export default function RecentGames(props) {
 
   const formatPlacementSuffix = (number) => {
     const stringified = number?.toString();
+    const secondToLastDigit = stringified?.charAt(stringified.length - 2);
     const lastDigit = stringified?.charAt(stringified.length - 1);
+
+    if (secondToLastDigit === '1') {
+      return 'th';
+    }
     return suffixConfig?.[lastDigit] || '??';
   };
+
 
   const calculateGulag = (kills, deaths) => {
     if (kills && !deaths) {
